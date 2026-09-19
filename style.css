@@ -1,0 +1,49 @@
+:root{
+  --paper:#f6f3ea; --ink:#22302a; --ink-2:#5c6a63;
+  --line:#e0dbcd; --seal:#94382c; --marker:#cbdc85;
+  /* 链接色单独成变量：印章红在深色纸面上对比度只有 2.4:1，深色下必须提亮。 */
+  --link:#94382c;
+  /* 划线色带。浅色纸面上深色字压亮绿没问题；深色下字是浅色，
+     不透明亮绿会吃掉文字，必须降为半透明。 */
+  --hl:#cbdc85;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  padding:0 20px 72px;
+}
+.wrap{max-width:680px;margin:0 auto}
+header{padding:56px 0 8px}
+/* 真实 App Icon，不用 CSS 近似——之前那个红方块加系统字体的"回"
+   并不是百回的小篆签章，两处品牌符号会对不上。 */
+.mark{
+  width:56px;height:56px;display:block;border-radius:11px;
+  margin-bottom:20px;
+}
+h1{font-size:27px;margin:0 0 6px;letter-spacing:1px}
+.sub{color:var(--ink-2);font-size:15px;margin:0}
+h2{font-size:18px;margin:40px 0 10px;letter-spacing:.5px}
+h3{font-size:15px;margin:24px 0 6px}
+p,li{color:#33433b}
+a{color:var(--link);text-underline-offset:3px}
+ul{padding-left:1.25em}
+li{margin:4px 0}
+.card{
+  background:#fffdf7;border:1px solid var(--line);border-radius:16px;
+  padding:20px 22px;margin:22px 0;
+}
+.card p{margin:0 0 8px}
+.card p:last-child{margin:0}
+.k{display:inline-block;min-width:5.2em;color:var(--ink-2);font-size:14px}
+.hl{background:linear-gradient(transparent 62%,var(--hl) 62%);padding:0 2px}
+.en{color:var(--ink-2);font-size:13.5px;line-height:1.7}
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px}
+nav{margin:28px 0 0;font-size:14px}
+nav a{margin-right:18px}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#121614;--ink:#e6e3d8;--ink-2:#9aa79f;--line:#2b332e;--hl:rgba(203,220,133,.30);--link:#e3968a}
+  .card{background:#181d1a}
+  p,li{color:#cfd6cf}
+}

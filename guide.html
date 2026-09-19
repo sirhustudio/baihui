@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>百回 · 如何连接微信读书</title>
+<link rel="icon" href="favicon.png" sizes="32x32">
+<link rel="icon" href="icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="theme-color" content="#f6f3ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121614" media="(prefers-color-scheme: dark)">
+<meta name="description" content="从微信读书复制 API Key，粘贴到百回完成连接的图文步骤。">
+<link rel="stylesheet" href="style.css?v=3">
+<style>
+  /* 截图槽位：把真机截图放到 images/guide/step-N.png 即自动显示；
+     文件缺失时显示占位框，页面结构不用改。 */
+  .steps{list-style:none;padding:0;margin:28px 0 0}
+  /* 手机上文字在上、截图在下：并排时截图只有 130pt 宽，真机截图里的字根本看不清，
+     且文字被纵向居中到高截图中间，步骤之间留出大片空白。 */
+  .step{display:grid;grid-template-columns:1fr;gap:14px;padding:26px 0;border-top:1px solid var(--line)}
+  .step:first-child{border-top:0}
+  .step h3{margin:0 0 4px;font-size:17px;display:flex;align-items:center;gap:10px}
+  /* 序号取自 data-n，与截图上的红色标注一一对应；一张图含两步时显示“1–2”。 */
+  .step h3::before{content:attr(data-n);flex:none;
+    min-width:26px;height:26px;padding:0 7px;box-sizing:border-box;border-radius:13px;background:var(--marker);color:#22302a;
+    font:600 13px/26px -apple-system,sans-serif;text-align:center}
+  .step p{margin:0;font-size:15px;line-height:1.75}
+  .app{font-size:12px;color:var(--ink-2);letter-spacing:.5px;margin:0 0 4px}
+  kbd{font:inherit;font-weight:600;background:#fffdf7;border:1px solid var(--line);
+    border-radius:6px;padding:0 6px;white-space:nowrap}
+  code{font:14px ui-monospace,Menlo,monospace}
+  .shot{width:min(240px,68%);aspect-ratio:9/19.5;border-radius:18px;overflow:hidden;
+    border:1px solid var(--line);background:#fffdf7;margin:0}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .shot.empty{border:1.5px dashed var(--ink-2);display:flex;white-space:pre-line;align-items:center;justify-content:center;
+    text-align:center;font:12px/1.6 ui-monospace,Menlo,monospace;color:var(--ink-2);padding:8px}
+  @media (min-width:600px){
+    .step{grid-template-columns:1fr 220px;gap:28px;align-items:start}
+    .shot{width:220px}
+  }
+  .cta{display:block;text-align:center;margin:30px 0 0;padding:13px;border-radius:14px;
+    background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600}
+  .note{font-size:13.5px;color:var(--ink-2);margin:10px 0 0;text-align:center}
+  @media (prefers-color-scheme:dark){ .shot{background:#181d1a} kbd{background:#181d1a} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="mark" src="icon-192.png" width="56" height="56" alt="百回">
+    <h1>如何连接微信读书</h1>
+    <p class="sub">从微信读书复制一串 API Key，粘贴回百回。大约一分钟。</p>
+  </header>
+
+  <ol class="steps">
+    <li class="step">
+      <div>
+        <p class="app">在微信读书</p>
+        <h3 data-n="1–2">点「我」，再点右上角设置</h3>
+        <p>点底部最右侧的 <kbd>我</kbd>，再点右上角的 <kbd>设置</kbd> 图标。</p>
+      </div>
+      <figure class="shot"><img src="images/guide/step-1.jpg" alt="微信读书「我」页面，标出底部的「我」与右上角设置图标" loading="lazy"
+        onerror="this.parentNode.classList.add('empty');this.parentNode.textContent='截图缺失\nstep-1.jpg'"></figure>
+    </li>
+
+    <li class="step">
+      <div>
+        <p class="app">在微信读书</p>
+        <h3 data-n="3">打开「微信读书 Skill」</h3>
+        <p>在设置里往下滑，点 <kbd>微信读书 Skill</kbd>。</p>
+      </div>
+      <figure class="shot"><img src="images/guide/step-2.jpg" alt="微信读书设置列表，标出「微信读书 Skill」" loading="lazy"
+        onerror="this.parentNode.classList.add('empty');this.parentNode.textContent='截图缺失\nstep-2.jpg'"></figure>
+    </li>
+
+    <li class="step">
+      <div>
+        <p class="app">在微信读书</p>
+        <h3 data-n="4">复制 API Key</h3>
+        <p>滑到「获取 API Key」，点 <kbd>复制 Key</kbd>。Key 以 <code>wrk-</code> 开头。</p>
+      </div>
+      <figure class="shot"><img src="images/guide/step-3.jpg" alt="微信读书 Skill 页，标出「复制 Key」按钮" loading="lazy"
+        onerror="this.parentNode.classList.add('empty');this.parentNode.textContent='截图缺失\nstep-3.jpg'"></figure>
+    </li>
+
+    <li class="step">
+      <div>
+        <p class="app">回到百回</p>
+        <h3 data-n="5–6">粘贴 API Key</h3>
+        <p>切回百回，点输入框右侧的粘贴按钮；系统询问时点 <kbd>允许粘贴</kbd>。</p>
+      </div>
+      <figure class="shot"><img src="images/guide/step-4.jpg" alt="百回连接页，标出粘贴按钮与系统的「允许粘贴」" loading="lazy"
+        onerror="this.parentNode.classList.add('empty');this.parentNode.textContent='截图缺失\nstep-4.jpg'"></figure>
+    </li>
+
+    <li class="step">
+      <div>
+        <p class="app">在百回</p>
+        <h3 data-n="7">开始同步</h3>
+        <p>看到“已粘贴”后，点 <kbd>连接并同步我的划线</kbd>。</p>
+      </div>
+      <figure class="shot"><img src="images/guide/step-5.jpg" alt="百回连接页，标出「连接并同步我的划线」" loading="lazy"
+        onerror="this.parentNode.classList.add('empty');this.parentNode.textContent='截图缺失\nstep-5.jpg'"></figure>
+    </li>
+
+  </ol>
+
+  <a class="cta" href="weread://">打开微信读书</a>
+  <p class="note">截图中的红色序号对应上面的步骤；界面可能与你的微信读书版本略有不同。</p>
+
+  <h2>还是找不到？</h2>
+
+  <h3>设置里没有「微信读书 Skill」</h3>
+  <p>这是较新的功能。请先到 App Store 把微信读书更新到最新版本，再重新进入「我 → 设置」查看。</p>
+
+  <h3>用电脑获取</h3>
+  <p>在电脑浏览器打开 <a href="https://weread.qq.com/r/weread-skills">weread.qq.com/r/weread-skills</a>，点「登录微信读书」并用微信扫码，页面上会显示你的 API Key。复制后通过微信「文件传输助手」发到手机，再在百回里粘贴。</p>
+
+  <h3>粘贴后提示连接失败</h3>
+  <p>请确认复制的是完整的一整串、以 <code>wrk-</code> 开头，前后没有多余文字。如果曾经重新生成过 Key，旧的会失效，请复制最新的那一串。</p>
+
+  <h3>API Key 安全吗？</h3>
+  <p>Key 只保存在你 iPhone 的钥匙串里，百回没有服务器，不会上传它。<span class="hl">请不要把 Key 发给任何人</span>，也不要贴在公开的地方。</p>
+
+  <nav><a href="index.html">支持</a><a href="privacy.html">隐私政策</a></nav>
+
+  <footer>
+    <p class="en">
+      <strong>Connecting 百回 (BaiHui) to WeChat Reading</strong><br>
+      In WeChat Reading: Me → Settings → WeChat Reading Skill → Copy Key (starts with <code>wrk-</code>). In BaiHui, tap the paste button, allow pasting, then tap Connect.
+    </p>
+  </footer>
+</div>
+</body>
+</html>
